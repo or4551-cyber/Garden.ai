@@ -14,10 +14,10 @@ export class GeminiService {
           parts: [{ text: msg.content }],
         })),
         generationConfig: {
-          temperature: 0.9,
+          temperature: 0.7, // Lower for more focused, accurate responses
           topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 2048,
+          topP: 0.9, // Slightly lower for more deterministic output
+          maxOutputTokens: 3072, // More tokens for detailed responses
         },
       })
 
