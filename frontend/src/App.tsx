@@ -6,6 +6,7 @@ import ProjectPage from '@/pages/ProjectPage'
 import ProjectsPage from '@/pages/ProjectsPage'
 import StyleGalleryPage from '@/pages/StyleGalleryPage'
 import LoginPage from '@/pages/LoginPage'
+import DebugPage from '@/pages/DebugPage'
 import { ProjectProvider } from '@/contexts/ProjectContext'
 import { AuthProvider, useAuth } from '@/contexts/AuthContext'
 
@@ -28,6 +29,7 @@ function App() {
     <AuthProvider>
       <ProjectProvider>
         <Routes>
+          <Route path="/debug" element={<DebugPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/*" element={
             <ProtectedRoute>
