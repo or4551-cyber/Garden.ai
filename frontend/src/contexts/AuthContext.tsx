@@ -4,6 +4,15 @@ import { createClient, Session, User } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 
+console.log('🔐 Supabase Config:', {
+  url: supabaseUrl || '❌ Missing',
+  key: supabaseAnonKey ? '✅ Set' : '❌ Missing'
+})
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('❌ Supabase configuration missing! Check environment variables.')
+}
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 interface AuthContextType {
