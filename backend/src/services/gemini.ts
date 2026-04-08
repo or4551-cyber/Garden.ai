@@ -3,8 +3,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '')
 
 export class GeminiService {
-  private model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-  private visionModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+  private model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' })
+  private visionModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' })
 
   async chat(messages: Array<{ role: string; content: string }>, systemPrompt?: string): Promise<string> {
     try {
