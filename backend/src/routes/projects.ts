@@ -8,12 +8,13 @@ const router = Router()
 // Create project with image analysis
 router.post('/', async (req, res) => {
   try {
-    const { name, image, location, dimensions, notes } = req.body
+    const { name, image, location, dimensions, notes, userId } = req.body
 
     // Create project record
     const projectId = uuidv4()
     const project = {
       id: projectId,
+      user_id: userId,
       name,
       location,
       dimensions,

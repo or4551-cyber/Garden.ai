@@ -9,9 +9,11 @@ import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
 import { useDropzone } from 'react-dropzone'
 import { api } from '@/lib/api'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function HomePage() {
   const navigate = useNavigate()
+  const { user } = useAuth()
   const [isLoading, setIsLoading] = useState(false)
   const [uploadedImage, setUploadedImage] = useState<string | null>(null)
   const [projectName, setProjectName] = useState('')
@@ -60,6 +62,7 @@ export default function HomePage() {
           unit: dimensions.unit,
         } : undefined,
         notes,
+        userId: user?.id,
       })
 
       // Save to recent projects
