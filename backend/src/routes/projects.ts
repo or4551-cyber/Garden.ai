@@ -10,11 +10,14 @@ router.post('/', async (req, res) => {
   try {
     const { name, image, location, dimensions, notes, userId } = req.body
 
+    if (!name || !image) {
+      return res.status(400).json({ error: 'Name and image are required' })
+    }
+
     // Create project record
     const projectId = uuidv4()
-    const project = {
+    const project: any = {
       id: projectId,
-      user_id: userId,
       name,
       location,
       dimensions,
@@ -22,6 +25,11 @@ router.post('/', async (req, res) => {
       status: 'analyzing',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
+    }
+
+    // Add user_id only if provided
+    if (userId) {
+      project.user_id = userId
     }
 
     // Save to Supabase
